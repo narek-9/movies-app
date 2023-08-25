@@ -1,0 +1,39 @@
+.navigation {
+  z-index: 100;
+  width: 75%;
+  margin: auto;
+  display: flex;
+
+  &__imgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__img {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &__ul {
+    list-style-type: none;
+    display: flex;
+    margin: 50px 0;
+
+    &__li {
+      margin: 0 20px;
+      font-weight: 700;
+      font-size: 24px;
+
+      &__a {
+        text-decoration: none;
+        color: white;
+        transition: 0.3s;
+
+        &:hover {
+          color: red;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

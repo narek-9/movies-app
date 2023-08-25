@@ -1,0 +1,344 @@
+* {
+  color: white;
+}
+
+.tvData {
+  display: flex;
+  width: 75%;
+  margin: auto;
+  margin-top: 50px;
+
+  &__poster {
+    flex: 1;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 30px;
+  }
+
+  &__info {
+    flex: 2;
+    margin-left: 100px;
+
+    div {
+      margin: 20px 0;
+    }
+
+    &__title {
+      padding: 0;
+      margin-top: 0;
+      font-size: 40px;
+    }
+
+    &__genres {
+      font-size: 24px;
+    }
+
+    &__overview {
+      font-size: 20px;
+    }
+
+    &__runTime {
+      font-size: 20px;
+    }
+
+    &__linkButton {
+      border: none;
+      border-radius: 30px;
+      padding: 15px 20px;
+      background-color: red;
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+      outline: none;
+
+      &__a {
+        text-decoration: none;
+      }
+
+      &__disabled {
+        cursor: default;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      &__notDisabled:hover {
+        border: none;
+        transform: scale(1.2);
+        transition: 0.3s ease;
+      }
+    }
+  }
+}
+
+.creditsContent {
+  padding: 0;
+  margin: auto;
+  width: 85%;
+  color: white;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    padding: 35px 0;
+    position: relative;
+  }
+}
+
+.similarTvs__content {
+  padding: 0;
+  margin: auto;
+  width: 85%;
+  color: white;
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    position: relative;
+
+    &__item {
+      margin: 20px 35px;
+      flex: 1;
+    }
+  }
+}
+
+.tv__videos {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+
+  &__item {
+    &:not(:last-child) {
+      margin: 50px 0;
+    }
+
+    iframe {
+      width: 75%;
+      height: 600px;
+      border: none;
+    }
+  }
+}
+
+.no_trailers {
+  text-align: center;
+  padding: 0 0;
+  padding-top: 75px;
+  padding-bottom: 380px;
+  margin: 0;
+}
+
+.artificialTvData {
+  display: flex;
+  width: 75%;
+  margin: auto;
+  margin-top: 50px;
+
+  &__poster {
+    flex: 1;
+    height: 500px;
+    border-radius: 30px;
+    background-color: rgb(102, 101, 101);
+  }
+
+  &__info {
+    flex: 2;
+    margin-left: 100px;
+
+    &__title {
+      margin: 20px 0;
+      width: 200px;
+      height: 45px;
+      border-radius: 30px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__genres {
+      margin: 20px 0;
+      display: flex;
+      width: 62%;
+      justify-content: space-between;
+      &__text {
+        margin: 20px 0;
+        height: 30px;
+        width: 130px;
+        border-radius: 30px;
+        background-color: rgb(102, 101, 101);
+      }
+    }
+
+    &__overview {
+      margin: 20px 0;
+      margin-bottom: 5px;
+      width: 90%;
+      height: 30px;
+      border-radius: 30px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__overview__small {
+      margin: 20px 0;
+      margin-top: 0;
+      width: 250px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__runTime {
+      margin: 20px 0;
+      width: 150px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__linkButton {
+      margin: 20px 0;
+      width: 170px;
+      height: 55px;
+      border-radius: 30px;
+      background-color: rgb(102, 101, 101);
+    }
+  }
+}
+
+.artificialCreditsContent {
+  padding: 0;
+  margin: auto;
+  margin-top: 100px;
+  width: 85%;
+
+  &__title {
+    margin: auto;
+    width: 170px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgb(102, 101, 101);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    position: relative;
+
+    &__leftCircle,
+    &__rightCircle {
+      top: 135px;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding: 7px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__leftCircle {
+      left: -3%;
+    }
+
+    &__rightCircle {
+      right: -3%;
+    }
+
+    &__item {
+      margin: 20px 35px;
+      flex: 1;
+      height: 270px;
+      border-radius: 50%;
+      background-color: rgb(102, 101, 101);
+    }
+  }
+}
+
+.artificialSimilarTvscontent {
+  padding: 0;
+  margin: auto;
+  margin-top: 100px;
+  width: 85%;
+
+  &__title {
+    margin: auto;
+    width: 170px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgb(102, 101, 101);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    position: relative;
+
+    &__leftCircle,
+    &__rightCircle {
+      top: 180px;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding: 7px;
+      background-color: rgb(102, 101, 101);
+    }
+
+    &__leftCircle {
+      left: -3%;
+    }
+
+    &__rightCircle {
+      right: -3%;
+    }
+
+    &__item {
+      margin: 20px 35px;
+      flex: 1;
+      height: 350px;
+      border-radius: 7%;
+      background-color: rgb(102, 101, 101);
+    }
+  }
+}
+
+.artificialVideos {
+  width: 80%;
+  margin: auto;
+  margin-top: 80px;
+
+  &__item {
+    background-color: rgb(102, 101, 101);
+    width: 75%;
+    height: 600px;
+    margin: 50px auto;
+
+    &:last-child {
+      margin: 50px auto;
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    margin: auto;
+    width: 170px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgb(102, 101, 101);
+  }
+}

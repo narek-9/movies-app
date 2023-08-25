@@ -1,0 +1,32 @@
+.button {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  padding-top: 5px;
+  padding-right: 7px;
+  padding-left: 5px;
+  cursor: pointer;
+
+  &__top180 {
+    top: 180px;
+  }
+
+  &__top100 {
+    top: 135px;
+  }
+
+  &__disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  &__next {
+    right: -3%;
+    rotate: 180deg;
+  }
+
+  &__prev {
+    left: -3%;
+  }
+}

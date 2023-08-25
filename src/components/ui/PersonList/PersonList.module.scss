@@ -1,0 +1,31 @@
+.person {
+  &__link {
+    text-decoration: none;
+    margin: 10px 0;
+
+    &__img {
+      width: 225px;
+      height: 250px;
+      border-radius: 50%;
+      transition: transform 0.3s;
+
+      &__whiteBorder {
+        border: 1px solid white;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s;
+      }
+    }
+
+    &__text {
+      padding: 0;
+      margin: 0;
+      max-width: 200px;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
