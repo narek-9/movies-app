@@ -15,6 +15,10 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 30px;
+
+    &__whiteBorder {
+      border: 1px solid white;
+    }
   }
 
   &__info {

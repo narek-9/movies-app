@@ -35,6 +35,7 @@ const PersonPage: FC = () => {
   );
 
   let { id } = useParams();
+
   //@ts-ignore
   id = Number(id?.slice(1, id.length));
 
@@ -47,6 +48,7 @@ const PersonPage: FC = () => {
         personData.id
       );
       setPersonMovieCreditsData(personMovieCredits);
+      console.log(personMovieCredits);
 
       const personTvCredits = await getPersonCreditsData("tv", personData.id);
       setPersonTvCreditsData(personTvCredits);
@@ -61,13 +63,25 @@ const PersonPage: FC = () => {
 
   const isButtonDisabled = !currentPerson?.homepage;
 
-  const birthYear = currentPerson?.birthday.slice(0, 4);
-  let birthMonth = currentPerson?.birthday.slice(5, 7);
-  const birthDay = currentPerson?.birthday.slice(8, 10);
+  const birthYear = currentPerson?.birthday
+    ? currentPerson.birthday.slice(0, 4)
+    : "";
+  let birthMonth = currentPerson?.birthday
+    ? currentPerson.birthday.slice(5, 7)
+    : "";
+  const birthDay = currentPerson?.birthday
+    ? currentPerson.birthday.slice(8, 10)
+    : "";
 
-  const deathYear = currentPerson?.deathday?.slice(0, 4);
-  let deathMonth = currentPerson?.deathday?.slice(5, 7);
-  const deathDay = currentPerson?.deathday?.slice(8, 10);
+  const deathYear = currentPerson?.deathday
+    ? currentPerson?.deathday.slice(0, 4)
+    : "";
+  let deathMonth = currentPerson?.deathday
+    ? currentPerson?.deathday.slice(5, 7)
+    : "";
+  const deathDay = currentPerson?.deathday
+    ? currentPerson?.deathday.slice(8, 10)
+    : "";
 
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
@@ -184,7 +198,11 @@ const PersonPage: FC = () => {
         <>
           <div className={styles.personData}>
             <div
-              className={styles.personData__poster}
+              className={`${styles.personData__poster} ${
+                !currentPerson.profile_path
+                  ? styles.personData__poster__whiteBorder
+                  : ""
+              }`}
               style={{
                 backgroundImage: `
             ${
@@ -224,7 +242,7 @@ const PersonPage: FC = () => {
               ) : (
                 ""
               )}
-              {currentPerson.also_known_as ? (
+              {currentPerson.also_known_as.length ? (
                 <div className={styles.personData__info__alsoKnownAs}>
                   Also known as:{" "}
                   {currentPerson.also_known_as.slice(0, 3).join(",")}

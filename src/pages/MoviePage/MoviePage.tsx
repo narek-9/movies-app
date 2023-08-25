@@ -79,7 +79,11 @@ const MoviePage: FC = () => {
         <>
           <div className={styles.movieData}>
             <div
-              className={styles.movieData__poster}
+              className={`${styles.movieData__poster} ${
+                !currentMovie.poster_path
+                  ? styles.movieData__poster__whiteBorder
+                  : ""
+              }`}
               style={{
                 backgroundImage: `
           ${

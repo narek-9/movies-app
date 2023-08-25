@@ -76,7 +76,9 @@ const TvPage: FC = () => {
         <>
           <div className={styles.tvData}>
             <div
-              className={styles.tvData__poster}
+              className={`${styles.tvData__poster} ${
+                !currentTv.poster_path ? styles.tvData__poster__whiteBorder : ""
+              }`}
               style={{
                 backgroundImage: `
             ${
@@ -258,9 +260,7 @@ const TvPage: FC = () => {
                 className={styles.artificialTvData__info__overview__small}
               ></div>
               <div className={styles.artificialTvData__info__runTime}></div>
-              <div
-                className={styles.artificialTvData__info__linkButton}
-              ></div>
+              <div className={styles.artificialTvData__info__linkButton}></div>
             </div>
           </div>
           <div className={styles.artificialCreditsContent}>
