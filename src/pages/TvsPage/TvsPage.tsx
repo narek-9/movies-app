@@ -24,6 +24,7 @@ import MoreButton from "../../components/MoreButton/MoreButton";
 import GenreButton from "../../components/GenreButton/GenreButton";
 
 import styles from "./TvsPage.module.scss";
+import Loading from "../../components/ui/Loading/Loading";
 
 const TvsPage: FC = () => {
   const [searchValue, setSearchValue] = useState<string>(
@@ -183,15 +184,7 @@ const TvsPage: FC = () => {
             )}
           </>
         ) : (
-          <div className={styles.artificialContent}>
-            <div className={styles.artificialContent__title}></div>
-            <div className={styles.artificialContent__wrapper}>
-              <div className={styles.artificialContent__wrapper__item}></div>
-              <div className={styles.artificialContent__wrapper__item}></div>
-              <div className={styles.artificialContent__wrapper__item}></div>
-              <div className={styles.artificialContent__wrapper__item}></div>
-            </div>
-          </div>
+          <Loading />
         )}
       </div>
     </>

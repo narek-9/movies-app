@@ -20,6 +20,7 @@ import ScrollButton from "../../components/ScrollButton/ScrollButton";
 import notFound from "../../assets/not-found.png";
 
 import styles from "./TvPage.module.scss";
+import Loading from "../../components/ui/Loading/Loading";
 
 const TvPage: FC = () => {
   const [currentTv, setCurrentTv] = useState<tv>();
@@ -239,91 +240,7 @@ const TvPage: FC = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className={styles.artificialTvData}>
-            <div className={styles.artificialTvData__poster}></div>
-            <div className={styles.artificialTvData__info}>
-              <div className={styles.artificialTvData__info__title}></div>
-              <div className={styles.artificialTvData__info__genres}>
-                <div
-                  className={styles.artificialTvData__info__genres__text}
-                ></div>
-                <div
-                  className={styles.artificialTvData__info__genres__text}
-                ></div>
-                <div
-                  className={styles.artificialTvData__info__genres__text}
-                ></div>
-              </div>
-              <div className={styles.artificialTvData__info__overview}></div>
-              <div
-                className={styles.artificialTvData__info__overview__small}
-              ></div>
-              <div className={styles.artificialTvData__info__runTime}></div>
-              <div className={styles.artificialTvData__info__linkButton}></div>
-            </div>
-          </div>
-          <div className={styles.artificialCreditsContent}>
-            <div className={styles.artificialCreditsContent__title}></div>
-            <div className={styles.artificialCreditsContent__wrapper}>
-              <div
-                className={styles.artificialCreditsContent__wrapper__leftCircle}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={
-                  styles.artificialCreditsContent__wrapper__rightCircle
-                }
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialSimilarTvscontent}>
-            <div className={styles.artificialSimilarTvscontent__title}></div>
-            <div className={styles.artificialSimilarTvscontent__wrapper}>
-              <div
-                className={
-                  styles.artificialSimilarTvscontent__wrapper__leftCircle
-                }
-              ></div>
-              <div
-                className={styles.artificialSimilarTvscontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarTvscontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarTvscontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarTvscontent__wrapper__item}
-              ></div>
-              <div
-                className={
-                  styles.artificialSimilarTvscontent__wrapper__rightCircle
-                }
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialVideos}>
-            <div className={styles.artificialTvs__title}></div>
-            <div className={styles.artificialTvs__item}></div>
-            <div className={styles.artificialTvs__title}></div>
-            <div className={styles.artificialTvs__item}></div>
-            <div className={styles.artificialTvs__title}></div>
-            <div className={styles.artificialTvs__item}></div>
-          </div>
-        </>
+        <Loading />
       )}
     </>
   );

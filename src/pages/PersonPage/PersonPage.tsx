@@ -15,6 +15,7 @@ import MovieList from "../../components/ui/MovieList/MovieList";
 import notFound from "../../assets/not-found.png";
 
 import styles from "./PersonPage.module.scss";
+import Loading from "../../components/ui/Loading/Loading";
 
 const PersonPage: FC = () => {
   const [currentPerson, setCurrentPerson] = useState<person>();
@@ -425,47 +426,7 @@ const PersonPage: FC = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className={styles.artificialPersonData}>
-            <div className={styles.artificialPersonData__poster}></div>
-            <div className={styles.artificialPersonData__info}>
-              <div className={styles.artificialPersonData__info__name}></div>
-              <div className={styles.artificialPersonData__info__ageInfo}></div>
-              <div
-                className={styles.artificialPersonData__info__alsoKnownAs}
-              ></div>
-              <div
-                className={styles.artificialPersonData__info__biography}
-              ></div>
-              <div
-                className={styles.artificialPersonData__info__linkButton}
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialSelectCredit}>
-            <div className={styles.artificialSelectCredit__text}></div>
-            <div className={styles.artificialSelectCredit__text}></div>
-            <div className={styles.artificialSelectCredit__text}></div>
-            <div className={styles.artificialSelectCredit__text}></div>
-          </div>
-          <div className={styles.artificialSelectContent}>
-            <div className={styles.artificialSelectContent__title}></div>
-            <div className={styles.artificialSelectContent__wrapper}>
-              <div
-                className={styles.artificialSelectContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSelectContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSelectContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSelectContent__wrapper__item}
-              ></div>
-            </div>
-          </div>
-        </>
+        <Loading />
       )}
     </>
   );

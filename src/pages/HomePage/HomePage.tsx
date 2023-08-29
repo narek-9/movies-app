@@ -26,6 +26,7 @@ import MoreButton from "../../components/MoreButton/MoreButton";
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 import styles from "./HomePage.module.scss";
+import Loading from "../../components/ui/Loading/Loading";
 
 const HomePage: FC = () => {
   const [searchValue, setSearchValue] = useState<string>(
@@ -151,23 +152,7 @@ const HomePage: FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className={styles.artificialContent}>
-                  <div className={styles.artificialContent__title}></div>
-                  <div className={styles.artificialContent__wrapper}>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                  </div>
-                </div>
+                <Loading />
               )}
               {trendingMovies.results.length ? (
                 <div>
@@ -204,23 +189,7 @@ const HomePage: FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className={styles.artificialContent}>
-                  <div className={styles.artificialContent__title}></div>
-                  <div className={styles.artificialContent__wrapper}>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                  </div>
-                </div>
+                <Loading />
               )}
             </div>
             <div>
@@ -259,23 +228,7 @@ const HomePage: FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className={styles.artificialContent}>
-                  <div className={styles.artificialContent__title}></div>
-                  <div className={styles.artificialContent__wrapper}>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                  </div>
-                </div>
+                <Loading />
               )}
               {trendingTvs.results.length ? (
                 <div>
@@ -312,23 +265,7 @@ const HomePage: FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className={styles.artificialContent}>
-                  <div className={styles.artificialContent__title}></div>
-                  <div className={styles.artificialContent__wrapper}>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                    <div
-                      className={styles.artificialContent__wrapper__item}
-                    ></div>
-                  </div>
-                </div>
+                <Loading />
               )}
             </div>
           </>

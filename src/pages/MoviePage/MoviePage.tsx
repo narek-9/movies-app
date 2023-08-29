@@ -20,6 +20,7 @@ import ScrollButton from "../../components/ScrollButton/ScrollButton";
 import notFound from "../../assets/not-found.png";
 
 import styles from "./MoviePage.module.scss";
+import Loading from "../../components/ui/Loading/Loading";
 
 const MoviePage: FC = () => {
   const [currentMovie, setCurrentMovie] = useState<movie>();
@@ -286,103 +287,7 @@ const MoviePage: FC = () => {
           )}
         </>
       ) : (
-        <>
-          <div className={styles.artificialMovieData}>
-            <div className={styles.artificialMovieData__poster}></div>
-            <div className={styles.artificialMovieData__info}>
-              <div className={styles.artificialMovieData__info__title}></div>
-              <div className={styles.artificialMovieData__info__genres}>
-                <div
-                  className={styles.artificialMovieData__info__genres__text}
-                ></div>
-                <div
-                  className={styles.artificialMovieData__info__genres__text}
-                ></div>
-                <div
-                  className={styles.artificialMovieData__info__genres__text}
-                ></div>
-              </div>
-              <div className={styles.artificialMovieData__info__overview}></div>
-              <div
-                className={styles.artificialMovieData__info__overview__small}
-              ></div>
-              <div className={styles.artificialMovieData__info__runTime}></div>
-              <div
-                className={styles.artificialMovieData__info__linkButton}
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialCreditsContent}>
-            <div className={styles.artificialCreditsContent__title}></div>
-            <div className={styles.artificialCreditsContent__wrapper}>
-              <div
-                className={styles.artificialCreditsContent__wrapper__leftCircle}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialCreditsContent__wrapper__item}
-              ></div>
-              <div
-                className={
-                  styles.artificialCreditsContent__wrapper__rightCircle
-                }
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialSimilarMoviescontent}>
-            <div className={styles.artificialSimilarMoviescontent__title}></div>
-            <div className={styles.artificialSimilarMoviescontent__wrapper}>
-              <div
-                className={
-                  styles.artificialSimilarMoviescontent__wrapper__leftCircle
-                }
-              ></div>
-              <div
-                className={styles.artificialSimilarMoviescontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarMoviescontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarMoviescontent__wrapper__item}
-              ></div>
-              <div
-                className={styles.artificialSimilarMoviescontent__wrapper__item}
-              ></div>
-              <div
-                className={
-                  styles.artificialSimilarMoviescontent__wrapper__rightCircle
-                }
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialSelectContent}>
-            <div className={styles.artificialSelectContent__wrapper}>
-              <div
-                className={styles.artificialSelectContent__wrapper__text}
-              ></div>
-              <div
-                className={styles.artificialSelectContent__wrapper__text}
-              ></div>
-            </div>
-          </div>
-          <div className={styles.artificialVideos}>
-            <div className={styles.artificialVideos__title}></div>
-            <div className={styles.artificialVideos__item}></div>
-            <div className={styles.artificialVideos__title}></div>
-            <div className={styles.artificialVideos__item}></div>
-            <div className={styles.artificialVideos__title}></div>
-            <div className={styles.artificialVideos__item}></div>
-          </div>
-        </>
+        <Loading />
       )}
     </>
   );
