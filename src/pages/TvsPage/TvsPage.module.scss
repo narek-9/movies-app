@@ -21,3 +21,15 @@
     }
   }
 }
+
+.artificialGenres {
+  display: flex;
+
+  &__item {
+    flex: 1;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 30px;
+    background-color: rgb(102, 101, 101);
+  }
+}

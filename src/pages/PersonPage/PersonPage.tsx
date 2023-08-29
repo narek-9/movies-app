@@ -49,7 +49,6 @@ const PersonPage: FC = () => {
         personData.id
       );
       setPersonMovieCreditsData(personMovieCredits);
-      console.log(personMovieCredits);
 
       const personTvCredits = await getPersonCreditsData("tv", personData.id);
       setPersonTvCreditsData(personTvCredits);
