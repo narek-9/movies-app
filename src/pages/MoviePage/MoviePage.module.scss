@@ -96,7 +96,7 @@
   }
 }
 
-.similarMovies__content {
+.similarMoviesContent {
   padding: 0;
   margin: auto;
   width: 85%;
@@ -144,7 +144,7 @@
   }
 }
 
-.movie__videos {
+.movieVideos {
   width: 80%;
   margin: auto;
   text-align: center;
@@ -162,10 +162,153 @@
   }
 }
 
-.no_trailers {
+.noTrailers {
   text-align: center;
   padding: 0 0;
   padding-top: 75px;
   padding-bottom: 380px;
   margin: 0;
+}
+
+.skeletonMovieData {
+  display: flex;
+  width: 75%;
+  margin: auto;
+  margin-top: 50px;
+
+  &__poster {
+    flex: 1;
+
+    span {
+      height: 500px;
+      border-radius: 30px;
+    }
+  }
+
+  &__info {
+    flex: 2;
+    margin-left: 100px;
+
+    span {
+      margin: 20px 0;
+    }
+
+    &__title {
+      height: 40px;
+    }
+
+    &__genres {
+      height: 30px;
+      width: 450px;
+    }
+
+    &__overview {
+      font-size: 20px;
+      height: 150px;
+    }
+
+    &__runTime {
+      height: 30px;
+      width: 150px;
+    }
+
+    &__linkButton {
+      height: 50px;
+      width: 150px;
+      border-radius: 30px;
+    }
+  }
+}
+
+.skeletonCreditsContent {
+  padding: 50px 0;
+  margin: auto;
+  width: 85%;
+  color: white;
+
+  &__titleWrapper {
+    width: 15%;
+    margin: auto;
+
+    span {
+      height: 40px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    padding: 35px 0;
+  }
+}
+
+.skeletonSimilarMoviesContent {
+  padding: 0;
+  margin: auto;
+  width: 85%;
+
+  &__titleWrapper {
+    width: 15%;
+    margin: auto;
+
+    span {
+      height: 40px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+
+    span {
+      margin: 20px 35px;
+      flex: 1;
+    }
+  }
+}
+
+.skeletonSelectContent {
+  display: flex;
+  padding: 0;
+  margin: auto;
+  width: 85%;
+
+  &__item {
+    width: 10%;
+    margin: 0 10px;
+
+    span {
+      height: 30px;
+    }
+  }
+}
+
+.skeletonMovieVideos {
+  width: 80%;
+  margin: auto;
+  padding: 50px 0;
+
+  &__titleWrapper {
+    width: 15%;
+    margin: auto;
+
+    span {
+      height: 40px;
+    }
+  }
+
+  &__item {
+    margin: auto;
+    width: 75%;
+
+    span {
+      margin-top: 10px;
+      height: 600px;
+    }
+  }
 }

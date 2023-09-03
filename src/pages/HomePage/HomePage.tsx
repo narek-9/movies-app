@@ -27,6 +27,7 @@ import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 import styles from "./HomePage.module.scss";
 import Loading from "../../components/ui/Loading/Loading";
+import SkeletonMovieList from "../../components/ui/SkeletonMoviesList/SkeletonMovieList";
 
 const HomePage: FC = () => {
   const [searchValue, setSearchValue] = useState<string>(
@@ -117,156 +118,163 @@ const HomePage: FC = () => {
         ) : (
           <>
             <div>
-              {topRatedMovies.results.length ? (
-                <div>
-                  <h1>Top Rated Movies</h1>
-                  <div className={styles.content__block}>
-                    <ScrollButton
-                      data={topRatedMovies}
-                      firstIndex={firstTopRatedMoviesIndex}
-                      setFirstIndex={setFirstTopRatedMoviesIndex}
-                      lastIndex={lastTopRatedMoviesIndex}
-                      setLastIndex={setLastTopRatedMoviesIndex}
-                      isNextButton={false}
-                      valueForDispatch="topRatedMovies"
-                    />
-                    {topRatedMovies.results
-                      .slice(firstTopRatedMoviesIndex, lastTopRatedMoviesIndex)
-                      .map((movie) => (
-                        <div
-                          className={styles.content__block__item}
-                          key={movie.id}
-                        >
-                          <MovieList movie={movie} />
-                        </div>
-                      ))}
-                    <ScrollButton
-                      data={topRatedMovies}
-                      firstIndex={firstTopRatedMoviesIndex}
-                      setFirstIndex={setFirstTopRatedMoviesIndex}
-                      lastIndex={lastTopRatedMoviesIndex}
-                      setLastIndex={setLastTopRatedMoviesIndex}
-                      isNextButton
-                      valueForDispatch="topRatedMovies"
-                    />
-                  </div>
+              <div>
+                <h1>Top Rated Movies</h1>
+                <div className={styles.content__block}>
+                  <ScrollButton
+                    data={topRatedMovies}
+                    firstIndex={firstTopRatedMoviesIndex}
+                    setFirstIndex={setFirstTopRatedMoviesIndex}
+                    lastIndex={lastTopRatedMoviesIndex}
+                    setLastIndex={setLastTopRatedMoviesIndex}
+                    isNextButton={false}
+                    valueForDispatch="topRatedMovies"
+                  />
+                  {topRatedMovies.results.length
+                    ? topRatedMovies.results
+                        .slice(
+                          firstTopRatedMoviesIndex,
+                          lastTopRatedMoviesIndex
+                        )
+                        .map((movie) => (
+                          <div
+                            className={styles.content__block__item}
+                            key={movie.id}
+                          >
+                            <MovieList movie={movie} />
+                          </div>
+                        ))
+                    : Array(4)
+                        .fill(0)
+                        .map((_, id) => <SkeletonMovieList key={id} />)}
+                  <ScrollButton
+                    data={topRatedMovies}
+                    firstIndex={firstTopRatedMoviesIndex}
+                    setFirstIndex={setFirstTopRatedMoviesIndex}
+                    lastIndex={lastTopRatedMoviesIndex}
+                    setLastIndex={setLastTopRatedMoviesIndex}
+                    isNextButton
+                    valueForDispatch="topRatedMovies"
+                  />
                 </div>
-              ) : (
-                <Loading />
-              )}
-              {trendingMovies.results.length ? (
-                <div>
-                  <h1>Trending Movies</h1>
-                  <div className={styles.content__block}>
-                    <ScrollButton
-                      data={trendingMovies}
-                      firstIndex={firstTrendingMoviesIndex}
-                      setFirstIndex={setFirstTrendingMoviesIndex}
-                      lastIndex={lastTrendingMoviesIndex}
-                      setLastIndex={setLastTrendingMoviesIndex}
-                      isNextButton={false}
-                      valueForDispatch="trendingMovies"
-                    />
-                    {trendingMovies.results
-                      .slice(firstTrendingMoviesIndex, lastTrendingMoviesIndex)
-                      .map((movie) => (
-                        <div
-                          className={styles.content__block__item}
-                          key={movie.id}
-                        >
-                          <MovieList movie={movie} />
-                        </div>
-                      ))}
-                    <ScrollButton
-                      data={trendingMovies}
-                      firstIndex={firstTrendingMoviesIndex}
-                      setFirstIndex={setFirstTrendingMoviesIndex}
-                      lastIndex={lastTrendingMoviesIndex}
-                      setLastIndex={setLastTrendingMoviesIndex}
-                      isNextButton
-                      valueForDispatch="trendingMovies"
-                    />
-                  </div>
+              </div>
+
+              <div>
+                <h1>Trending Movies</h1>
+                <div className={styles.content__block}>
+                  <ScrollButton
+                    data={trendingMovies}
+                    firstIndex={firstTrendingMoviesIndex}
+                    setFirstIndex={setFirstTrendingMoviesIndex}
+                    lastIndex={lastTrendingMoviesIndex}
+                    setLastIndex={setLastTrendingMoviesIndex}
+                    isNextButton={false}
+                    valueForDispatch="trendingMovies"
+                  />
+                  {trendingMovies.results.length
+                    ? trendingMovies.results
+                        .slice(
+                          firstTrendingMoviesIndex,
+                          lastTrendingMoviesIndex
+                        )
+                        .map((movie) => (
+                          <div
+                            className={styles.content__block__item}
+                            key={movie.id}
+                          >
+                            <MovieList movie={movie} />
+                          </div>
+                        ))
+                    : Array(4)
+                        .fill(0)
+                        .map((_, id) => <SkeletonMovieList key={id} />)}
+                  <ScrollButton
+                    data={trendingMovies}
+                    firstIndex={firstTrendingMoviesIndex}
+                    setFirstIndex={setFirstTrendingMoviesIndex}
+                    lastIndex={lastTrendingMoviesIndex}
+                    setLastIndex={setLastTrendingMoviesIndex}
+                    isNextButton
+                    valueForDispatch="trendingMovies"
+                  />
                 </div>
-              ) : (
-                <Loading />
-              )}
+              </div>
             </div>
             <div>
-              {topRatedTvs.results.length ? (
-                <div>
-                  <h1>Top Rated TV</h1>
-                  <div className={styles.content__block}>
-                    <ScrollButton
-                      data={topRatedTvs}
-                      firstIndex={firstTopRatedTvsIndex}
-                      lastIndex={lastTopRatedTvsIndex}
-                      setFirstIndex={setFirstTopRatedTvsIndex}
-                      setLastIndex={setLastTopRatedTvsIndex}
-                      isNextButton={false}
-                      valueForDispatch="topRatedTvs"
-                    />
-                    {topRatedTvs.results
-                      .slice(firstTopRatedTvsIndex, lastTopRatedTvsIndex)
-                      .map((movie) => (
-                        <div
-                          className={styles.content__block__item}
-                          key={movie.id}
-                        >
-                          <MovieList movie={movie} />
-                        </div>
-                      ))}
-                    <ScrollButton
-                      data={topRatedTvs}
-                      firstIndex={firstTopRatedTvsIndex}
-                      lastIndex={lastTopRatedTvsIndex}
-                      setFirstIndex={setFirstTopRatedTvsIndex}
-                      setLastIndex={setLastTopRatedTvsIndex}
-                      isNextButton
-                      valueForDispatch="topRatedTvs"
-                    />
-                  </div>
+              <div>
+                <h1>Top Rated TV</h1>
+                <div className={styles.content__block}>
+                  <ScrollButton
+                    data={topRatedTvs}
+                    firstIndex={firstTopRatedTvsIndex}
+                    lastIndex={lastTopRatedTvsIndex}
+                    setFirstIndex={setFirstTopRatedTvsIndex}
+                    setLastIndex={setLastTopRatedTvsIndex}
+                    isNextButton={false}
+                    valueForDispatch="topRatedTvs"
+                  />
+                  {topRatedTvs.results.length
+                    ? topRatedTvs.results
+                        .slice(firstTopRatedTvsIndex, lastTopRatedTvsIndex)
+                        .map((movie) => (
+                          <div
+                            className={styles.content__block__item}
+                            key={movie.id}
+                          >
+                            <MovieList movie={movie} />
+                          </div>
+                        ))
+                    : Array(4)
+                        .fill(0)
+                        .map((_, id) => <SkeletonMovieList key={id} />)}
+                  <ScrollButton
+                    data={topRatedTvs}
+                    firstIndex={firstTopRatedTvsIndex}
+                    lastIndex={lastTopRatedTvsIndex}
+                    setFirstIndex={setFirstTopRatedTvsIndex}
+                    setLastIndex={setLastTopRatedTvsIndex}
+                    isNextButton
+                    valueForDispatch="topRatedTvs"
+                  />
                 </div>
-              ) : (
-                <Loading />
-              )}
-              {trendingTvs.results.length ? (
-                <div>
-                  <h1>Trending TV</h1>
-                  <div className={styles.content__block}>
-                    <ScrollButton
-                      data={trendingTvs}
-                      firstIndex={firstTrendingTvsIndex}
-                      setFirstIndex={setFirstTrendingTvsIndex}
-                      lastIndex={lastTrendingTvsIndex}
-                      setLastIndex={setLastTrendingTvsIndex}
-                      isNextButton={false}
-                      valueForDispatch="trendingTvs"
-                    />
-                    {trendingTvs.results
-                      .slice(firstTrendingTvsIndex, lastTrendingTvsIndex)
-                      .map((movie) => (
-                        <div
-                          className={styles.content__block__item}
-                          key={movie.id}
-                        >
-                          <MovieList movie={movie} />
-                        </div>
-                      ))}
-                    <ScrollButton
-                      data={trendingTvs}
-                      firstIndex={firstTrendingTvsIndex}
-                      setFirstIndex={setFirstTrendingTvsIndex}
-                      lastIndex={lastTrendingTvsIndex}
-                      setLastIndex={setLastTrendingTvsIndex}
-                      isNextButton
-                      valueForDispatch="trendingTvs"
-                    />
-                  </div>
+              </div>
+              <div>
+                <h1>Trending TV</h1>
+                <div className={styles.content__block}>
+                  <ScrollButton
+                    data={trendingTvs}
+                    firstIndex={firstTrendingTvsIndex}
+                    setFirstIndex={setFirstTrendingTvsIndex}
+                    lastIndex={lastTrendingTvsIndex}
+                    setLastIndex={setLastTrendingTvsIndex}
+                    isNextButton={false}
+                    valueForDispatch="trendingTvs"
+                  />
+                  {trendingTvs.results.length
+                    ? trendingTvs.results
+                        .slice(firstTrendingTvsIndex, lastTrendingTvsIndex)
+                        .map((movie) => (
+                          <div
+                            className={styles.content__block__item}
+                            key={movie.id}
+                          >
+                            <MovieList movie={movie} />
+                          </div>
+                        ))
+                    : Array(4)
+                        .fill(0)
+                        .map((_, id) => <SkeletonMovieList key={id} />)}
+                  <ScrollButton
+                    data={trendingTvs}
+                    firstIndex={firstTrendingTvsIndex}
+                    setFirstIndex={setFirstTrendingTvsIndex}
+                    lastIndex={lastTrendingTvsIndex}
+                    setLastIndex={setLastTrendingTvsIndex}
+                    isNextButton
+                    valueForDispatch="trendingTvs"
+                  />
                 </div>
-              ) : (
-                <Loading />
-              )}
+              </div>
             </div>
           </>
         )}

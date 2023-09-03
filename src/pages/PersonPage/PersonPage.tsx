@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 import { getDetails, getPersonCreditsData } from "../../services/api";
 import {
@@ -11,11 +12,12 @@ import {
 } from "../../types";
 
 import MovieList from "../../components/ui/MovieList/MovieList";
+import SkeletonMovieList from "../../components/ui/SkeletonMoviesList/SkeletonMovieList";
 
 import notFound from "../../assets/not-found.png";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./PersonPage.module.scss";
-import Loading from "../../components/ui/Loading/Loading";
 
 const PersonPage: FC = () => {
   const [currentPerson, setCurrentPerson] = useState<person>();
@@ -295,11 +297,11 @@ const PersonPage: FC = () => {
               </div>
             </div>
           </div>
-          <div className={styles.selectCredit}>
+          <div className={styles.selectContent}>
             <p
-              className={`${styles.selectCredit__text} ${
+              className={`${styles.selectContent__text} ${
                 selectedValue === "movies as cast"
-                  ? styles.selectCredit__text__selected
+                  ? styles.selectContent__text__selected
                   : ""
               }`}
               onClick={() => {
@@ -310,9 +312,9 @@ const PersonPage: FC = () => {
               {currentPerson.name} Movies as cast
             </p>
             <p
-              className={`${styles.selectCredit__text} ${
+              className={`${styles.selectContent__text} ${
                 selectedValue === "tvs as cast" &&
-                styles.selectCredit__text__selected
+                styles.selectContent__text__selected
               }`}
               onClick={() => {
                 setSelectedValue("tvs as cast");
@@ -322,9 +324,9 @@ const PersonPage: FC = () => {
               {currentPerson.name} TV as cast
             </p>
             <p
-              className={`${styles.selectCredit__text} ${
+              className={`${styles.selectContent__text} ${
                 selectedValue === "movies as crew"
-                  ? styles.selectCredit__text__selected
+                  ? styles.selectContent__text__selected
                   : ""
               }`}
               onClick={() => {
@@ -335,9 +337,9 @@ const PersonPage: FC = () => {
               {currentPerson.name} Movies as crew
             </p>
             <p
-              className={`${styles.selectCredit__text} ${
+              className={`${styles.selectContent__text} ${
                 selectedValue === "tvs as crew"
-                  ? styles.selectCredit__text__selected
+                  ? styles.selectContent__text__selected
                   : ""
               }`}
               onClick={() => {
@@ -425,7 +427,52 @@ const PersonPage: FC = () => {
           </div>
         </>
       ) : (
-        <Loading />
+        <>
+          <div className={styles.skeletonPersonData}>
+            <div className={styles.skeletonPersonData__poster}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonPersonData__info}>
+              <Skeleton className={styles.skeletonPersonData__info__name} />
+              <Skeleton className={styles.skeletonPersonData__info__ageInfo} />
+              <Skeleton
+                className={styles.skeletonPersonData__info__alsoKnownAs}
+              />
+              <Skeleton
+                className={styles.skeletonPersonData__info__biography}
+              />
+              <Skeleton
+                className={styles.skeletonPersonData__info__linkButton}
+              />
+            </div>
+          </div>
+          <div className={styles.skeletonSelectContent}>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+          </div>
+          <div className={styles.skeletonContent}>
+            <div className={styles.skeletonContent__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonContent__content}>
+              {Array(4)
+                .fill(0)
+                .map((_, id) => (
+                  <SkeletonMovieList key={id} />
+                ))}
+            </div>
+          </div>
+        </>
       )}
     </>
   );

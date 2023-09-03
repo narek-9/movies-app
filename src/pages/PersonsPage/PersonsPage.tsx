@@ -16,6 +16,7 @@ import PersonList from "../../components/ui/PersonList/PersonList";
 
 import styles from "./PersonsPage.module.scss";
 import Loading from "../../components/ui/Loading/Loading";
+import SkeletonPersonList from "../../components/ui/SkeletonPersonList/SkeletonPersonList";
 
 const PersonsPage: FC = () => {
   const [searchValue, setSearchValue] = useState<string>(
@@ -88,15 +89,22 @@ const PersonsPage: FC = () => {
               <h1>No Persons</h1>
             )}
           </>
-        ) : allPersons.results.length ? (
+        ) : (
           <>
             <h1>Persons</h1>
             <div className={styles.content__persons}>
-              {allPersons.results.map((person) => (
-                <div className={styles.content__persons__item} key={person.id}>
-                  <PersonList person={person} />
-                </div>
-              ))}
+              {allPersons.results.length
+                ? allPersons.results.map((person) => (
+                    <div
+                      className={styles.content__persons__item}
+                      key={person.id}
+                    >
+                      <PersonList person={person} />
+                    </div>
+                  ))
+                : Array(4)
+                    .fill(0)
+                    .map((_, id) => <SkeletonPersonList key={id} />)}
             </div>
             {allPersons.results.length ? (
               allPersons.page >= 0 ? (
@@ -111,8 +119,6 @@ const PersonsPage: FC = () => {
               ""
             )}
           </>
-        ) : (
-          <Loading />
         )}
       </div>
     </>

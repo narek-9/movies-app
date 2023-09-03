@@ -22,14 +22,17 @@
   }
 }
 
-.artificialGenres {
+.skeletonGenres {
   display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
 
-  &__item {
+  &__genre {
     flex: 1;
-    height: 30px;
+    height: 40px;
+    width: 100px;
     margin: 0 10px;
     border-radius: 30px;
-    background-color: rgb(102, 101, 101);
   }
 }

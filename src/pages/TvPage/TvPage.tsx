@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "react-loading-skeleton";
 
 import { getSimilarMoviesOrTvsData } from "../../services/asyncActions";
 import {
@@ -12,15 +13,17 @@ import { crew, genre, tv, tvCast, video } from "../../types";
 import { GET_MORE_SIMILAR_TVS } from "../../utils/constants";
 import { getSimilarTvs } from "../../store/selectors";
 
-import MovieList from "../../components/ui/MovieList/MovieList";
-import GenreButton from "../../components/GenreButton/GenreButton";
 import PersonList from "../../components/ui/PersonList/PersonList";
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
+import MovieList from "../../components/ui/MovieList/MovieList";
+import GenreButton from "../../components/GenreButton/GenreButton";
+import SkeletonPersonList from "../../components/ui/SkeletonPersonList/SkeletonPersonList";
+import SkeletonMovieList from "../../components/ui/SkeletonMoviesList/SkeletonMovieList";
 
 import notFound from "../../assets/not-found.png";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./TvPage.module.scss";
-import Loading from "../../components/ui/Loading/Loading";
 
 const TvPage: FC = () => {
   const [currentTv, setCurrentTv] = useState<tv>();
@@ -185,9 +188,9 @@ const TvPage: FC = () => {
             ""
           )}
           {similarTvs.results.length ? (
-            <div className={styles.similarTvs__content}>
+            <div className={styles.similarTvsContent}>
               <h1>Similar TV</h1>
-              <div className={styles.similarTvs__content__wrapper}>
+              <div className={styles.similarTvsContent__wrapper}>
                 <ScrollButton
                   movie={currentTv}
                   isNextButton={false}
@@ -202,7 +205,7 @@ const TvPage: FC = () => {
                   .slice(firstSimilarTvIndex, lastSimilarTvIndex)
                   .map((tv) => (
                     <div
-                      className={styles.similarTvs__content__wrapper__item}
+                      className={styles.similarTvsContent__wrapper__item}
                       key={tv.id}
                     >
                       <MovieList movie={tv} />
@@ -223,10 +226,10 @@ const TvPage: FC = () => {
           ) : (
             ""
           )}
-          <div className={styles.tv__videos}>
+          <div className={styles.tvVideos}>
             {currentTvVideos.length ? (
               currentTvVideos.slice(0, 10).map((video) => (
-                <div key={video.id} className={styles.tv__videos__item}>
+                <div key={video.id} className={styles.tvVideos__item}>
                   <h1>{video.name}</h1>
                   <iframe
                     src={`https://www.youtube.com/embed/${video.key}`}
@@ -235,12 +238,57 @@ const TvPage: FC = () => {
                 </div>
               ))
             ) : (
-              <h1 className={styles.no_trailers}>No Trailers</h1>
+              <h1 className={styles.noTrailers}>No Trailers</h1>
             )}
           </div>
         </>
       ) : (
-        <Loading />
+        <>
+          <div className={styles.skeletonTvData}>
+            <div className={styles.skeletonTvData__poster}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonTvData__info}>
+              <Skeleton className={styles.skeletonTvData__info__title} />
+              <Skeleton className={styles.skeletonTvData__info__genres} />
+              <Skeleton className={styles.skeletonTvData__info__overview} />
+              <Skeleton className={styles.skeletonTvData__info__runTime} />
+              <Skeleton className={styles.skeletonTvData__info__linkButton} />
+            </div>
+          </div>
+          <div className={styles.skeletonCreditsContent}>
+            <div className={styles.skeletonCreditsContent__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonCreditsContent__wrapper}>
+              {Array(4)
+                .fill(0)
+                .map((_, id) => (
+                  <SkeletonPersonList key={id} />
+                ))}
+            </div>
+          </div>
+          <div className={styles.skeletonCreditsContent}>
+            <div className={styles.skeletonCreditsContent__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonCreditsContent__wrapper}>
+              {Array(4)
+                .fill(0)
+                .map((_, id) => (
+                  <SkeletonMovieList key={id} />
+                ))}
+            </div>
+          </div>
+          <div className={styles.skeletonTvVideos}>
+            <div className={styles.skeletonTvVideos__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonTvVideos__item}>
+              <Skeleton />
+            </div>
+          </div>
+        </>
       )}
     </>
   );

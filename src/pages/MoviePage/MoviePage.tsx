@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "react-loading-skeleton";
 
 import { getSimilarMoviesOrTvsData } from "../../services/asyncActions";
 import {
@@ -12,15 +13,17 @@ import { genre, movie, movieCast, crew, video } from "../../types";
 import { GET_SIMILAR_MOVIES } from "../../utils/constants";
 import { getSimilarMovies } from "../../store/selectors";
 
-import MovieList from "../../components/ui/MovieList/MovieList";
-import PersonList from "../../components/ui/PersonList/PersonList";
 import GenreButton from "../../components/GenreButton/GenreButton";
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
+import MovieList from "../../components/ui/MovieList/MovieList";
+import PersonList from "../../components/ui/PersonList/PersonList";
+import SkeletonPersonList from "../../components/ui/SkeletonPersonList/SkeletonPersonList";
+import SkeletonMovieList from "../../components/ui/SkeletonMoviesList/SkeletonMovieList";
 
 import notFound from "../../assets/not-found.png";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./MoviePage.module.scss";
-import Loading from "../../components/ui/Loading/Loading";
 
 const MoviePage: FC = () => {
   const [currentMovie, setCurrentMovie] = useState<movie>();
@@ -190,9 +193,9 @@ const MoviePage: FC = () => {
             ""
           )}
           {similarMovies.results.length ? (
-            <div className={styles.similarMovies__content}>
+            <div className={styles.similarMoviesContent}>
               <h1>Similar Movies</h1>
-              <div className={styles.similarMovies__content__wrapper}>
+              <div className={styles.similarMoviesContent__wrapper}>
                 <ScrollButton
                   movie={currentMovie}
                   isNextButton={false}
@@ -207,7 +210,7 @@ const MoviePage: FC = () => {
                   .slice(firstSimilarMovieIndex, lastSimilarMovieIndex)
                   .map((movie) => (
                     <div
-                      className={styles.similarMovies__content__wrapper__item}
+                      className={styles.similarMoviesContent__wrapper__item}
                       key={movie.id}
                     >
                       <MovieList movie={movie} />
@@ -268,9 +271,9 @@ const MoviePage: FC = () => {
           </div>
           {isTrailerSelected ? (
             currentMovieVideos.length ? (
-              <div className={styles.movie__videos}>
+              <div className={styles.movieVideos}>
                 {currentMovieVideos.slice(0, 10).map((video) => (
-                  <div className={styles.movie__videos__item} key={video.id}>
+                  <div className={styles.movieVideos__item} key={video.id}>
                     <h2>{video.name}</h2>
                     <iframe
                       src={`https://www.youtube.com/embed/${video.key}`}
@@ -280,14 +283,69 @@ const MoviePage: FC = () => {
                 ))}
               </div>
             ) : (
-              <h1 className={styles.no_trailers}>No Trailers</h1>
+              <h1 className={styles.noTrailers}>No Trailers</h1>
             )
           ) : (
             ""
           )}
         </>
       ) : (
-        <Loading />
+        <>
+          <div className={styles.skeletonMovieData}>
+            <div className={styles.skeletonMovieData__poster}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonMovieData__info}>
+              <Skeleton className={styles.skeletonMovieData__info__title} />
+              <Skeleton className={styles.skeletonMovieData__info__genres} />
+              <Skeleton className={styles.skeletonMovieData__info__overview} />
+              <Skeleton className={styles.skeletonMovieData__info__runTime} />
+              <Skeleton
+                className={styles.skeletonMovieData__info__linkButton}
+              />
+            </div>
+          </div>
+          <div className={styles.skeletonCreditsContent}>
+            <div className={styles.skeletonCreditsContent__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonCreditsContent__wrapper}>
+              {Array(4)
+                .fill(0)
+                .map((_, id) => (
+                  <SkeletonPersonList key={id} />
+                ))}
+            </div>
+          </div>
+          <div className={styles.skeletonCreditsContent}>
+            <div className={styles.skeletonCreditsContent__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonCreditsContent__wrapper}>
+              {Array(4)
+                .fill(0)
+                .map((_, id) => (
+                  <SkeletonMovieList key={id} />
+                ))}
+            </div>
+          </div>
+          <div className={styles.skeletonSelectContent}>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonSelectContent__item}>
+              <Skeleton />
+            </div>
+          </div>
+          <div className={styles.skeletonMovieVideos}>
+            <div className={styles.skeletonMovieVideos__titleWrapper}>
+              <Skeleton />
+            </div>
+            <div className={styles.skeletonMovieVideos__item}>
+              <Skeleton />
+            </div>
+          </div>
+        </>
       )}
     </>
   );

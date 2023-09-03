@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 
 import { getSearchMoviesOrTvsOrPersonsData } from "../../services/asyncActions";
@@ -96,4 +96,4 @@ const Search: FC<SearchProps> = ({
   );
 };
 
-export default Search;
+export default React.memo(Search);

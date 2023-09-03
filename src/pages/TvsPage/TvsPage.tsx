@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "react-loading-skeleton";
 
 import { getMoreMoviesOrTvsData } from "../../services/asyncActions";
 import { getSearchMoviesOrTvsOrPersonsData } from "../../services/asyncActions";
@@ -18,13 +19,14 @@ import {
   getSortedTvs,
 } from "../../store/selectors";
 
-import MovieList from "../../components/ui/MovieList/MovieList";
 import Search from "../../components/Search/Search";
 import MoreButton from "../../components/MoreButton/MoreButton";
 import GenreButton from "../../components/GenreButton/GenreButton";
+import MovieList from "../../components/ui/MovieList/MovieList";
+import SkeletonMovieList from "../../components/ui/SkeletonMoviesList/SkeletonMovieList";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./TvsPage.module.scss";
-import Loading from "../../components/ui/Loading/Loading";
 
 const TvsPage: FC = () => {
   const [searchValue, setSearchValue] = useState<string>(
@@ -87,17 +89,12 @@ const TvsPage: FC = () => {
               ))}
             </div>
           ) : (
-            <div className={styles.artificialGenres}>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
-              <div className={styles.artificialGenres__item}></div>
+            <div className={styles.skeletonGenres}>
+              {Array(20)
+                .fill(0)
+                .map((_, id) => (
+                  <Skeleton className={styles.skeletonGenres__genre} key={id} />
+                ))}
             </div>
           )
         ) : (
@@ -163,15 +160,19 @@ const TvsPage: FC = () => {
               <h1>No TV</h1>
             )}
           </>
-        ) : allTvs.results.length ? (
+        ) : (
           <>
             <h1>TV </h1>
             <div className={styles.content__tvs}>
-              {allTvs.results.map((movie) => (
-                <div className={styles.content__tvs__item} key={movie.id}>
-                  <MovieList movie={movie} />
-                </div>
-              ))}
+              {allTvs.results.length
+                ? allTvs.results.map((movie) => (
+                    <div className={styles.content__tvs__item} key={movie.id}>
+                      <MovieList movie={movie} />
+                    </div>
+                  ))
+                : Array(4)
+                    .fill(0)
+                    .map((_, id) => <SkeletonMovieList key={id} />)}
             </div>
             {allTvs.results.length ? (
               allTvs.page >= 0 ? (
@@ -183,8 +184,6 @@ const TvsPage: FC = () => {
               ""
             )}
           </>
-        ) : (
-          <Loading />
         )}
       </div>
     </>

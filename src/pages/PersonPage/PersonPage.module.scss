@@ -88,7 +88,7 @@ h1 {
   }
 }
 
-.selectCredit {
+.selectContent {
   display: flex;
   justify-content: space-between;
   padding: 0;
@@ -129,6 +129,104 @@ h1 {
 
     &__item {
       margin: 20px 35px;
+      flex: 1;
+    }
+  }
+}
+
+.skeletonPersonData {
+  display: flex;
+  width: 75%;
+  margin: auto;
+  margin-top: 50px;
+
+  &__poster {
+    flex: 1;
+
+    span {
+      flex: 1;
+      height: 400px;
+      border-radius: 50%;
+    }
+  }
+
+  &__info {
+    flex: 2;
+    margin-left: 100px;
+
+    span {
+      margin: 20px 0;
+    }
+
+    &__name {
+      height: 40px;
+      width: 250px;
+    }
+
+    &__ageInfo {
+      height: 25px;
+      width: 500px;
+    }
+
+    &__alsoKnownAs {
+      height: 25px;
+      width: 400px;
+    }
+
+    &__biography {
+      height: 20px;
+      width: 200px;
+    }
+
+    &__linkButton {
+      height: 50px;
+      width: 150px;
+      border-radius: 30px;
+    }
+  }
+}
+
+.skeletonSelectContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: auto;
+  width: 85%;
+  margin-top: 150px;
+
+  &__item {
+    width: 20%;
+    margin: 0 10px;
+
+    span {
+      height: 30px;
+    }
+  }
+}
+
+.skeletonContent {
+  padding: 0;
+  margin: auto;
+  width: 85%;
+  padding: 50px 0;
+
+  &__titleWrapper {
+    width: 15%;
+    margin: auto;
+
+    span {
+      height: 40px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+
+    span {
+      margin: 15px;
       flex: 1;
     }
   }

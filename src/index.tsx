@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 import { store } from "./store";
 
@@ -16,7 +17,9 @@ root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <SkeletonTheme baseColor="#535252" highlightColor="#777777">
+        <App />
+      </SkeletonTheme>
     </Provider>
   </BrowserRouter>
   // </React.StrictMode>
